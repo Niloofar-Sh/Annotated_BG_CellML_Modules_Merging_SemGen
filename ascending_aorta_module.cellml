@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model xmlns="http://www.cellml.org/cellml/1.1#" xmlns:cmeta="http://www.cellml.org/metadata/1.0#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqs="http://www.cellml.org/bqs/1.0#" xmlns:semsim="http://www.bhi.washington.edu/SemSim#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" name="ascending_aorta_module" cmeta:id="metaid0">
+  <units name="mm">
+    <unit prefix="milli" units="metre" />
+  </units>
+  <units name="m6_per_J">
+    <unit exponent="6.0" units="metre" />
+    <unit exponent="-1.0" units="joule" />
+  </units>
+  <units name="per_m">
+    <unit exponent="-1.0" units="metre" />
+  </units>
+  <units name="J_per_m">
+    <unit units="joule" />
+    <unit exponent="-1.0" units="metre" />
+  </units>
+  <units name="J_s_per_m6">
+    <unit units="second" />
+    <unit units="joule" />
+    <unit exponent="-6.0" units="metre" />
+  </units>
+  <units name="J_s2_per_m6">
+    <unit units="joule" />
+    <unit exponent="-6.0" units="metre" />
+    <unit exponent="2.0" units="second" />
+  </units>
+  <units name="m3_per_s">
+    <unit exponent="3.0" units="metre" />
+    <unit exponent="-1.0" units="second" />
+  </units>
+  <units name="J_s2_per_m5">
+    <unit exponent="2.0" units="second" />
+    <unit exponent="-5.0" units="metre" />
+    <unit units="joule" />
+  </units>
+  <units name="per_m3">
+    <unit exponent="-3.0" units="metre" />
+  </units>
+  <units name="per_s">
+    <unit exponent="-1.0" units="second" />
+  </units>
+  <units name="J_s_per_m3">
+    <unit exponent="-3.0" units="metre" />
+    <unit units="second" />
+    <unit units="joule" />
+  </units>
+  <units name="s_per_m3">
+    <unit units="second" />
+    <unit exponent="-3.0" units="metre" />
+  </units>
+  <units name="J_per_m3">
+    <unit units="joule" />
+    <unit exponent="-3.0" units="metre" />
+  </units>
+  <component name="ascending_aorta">
+    <variable cmeta:id="ascending_aorta.t" name="t" units="second" />
+    <variable cmeta:id="ascending_aorta.mu" initial_value="0.004" name="mu" units="J_s_per_m3" />
+    <variable cmeta:id="ascending_aorta.rho" initial_value="1050" name="rho" units="J_s2_per_m5" />
+    <variable cmeta:id="ascending_aorta.E" initial_value="0.6e+6" name="E" units="J_per_m3" />
+    <variable cmeta:id="ascending_aorta.l_ascending_aorta" initial_value="12.33e-03" name="l_ascending_aorta" units="metre" />
+    <variable cmeta:id="ascending_aorta.h" name="h" units="metre" />
+    <variable cmeta:id="ascending_aorta.r_ascending_aorta" initial_value="5.03e-03" name="r_ascending_aorta" units="metre" />
+    <variable cmeta:id="ascending_aorta.I" name="I" units="J_s2_per_m6" />
+    <variable cmeta:id="ascending_aorta.C" name="C" units="m6_per_J" />
+    <variable cmeta:id="ascending_aorta.R" name="R" units="J_s_per_m6" />
+    <variable cmeta:id="ascending_aorta.R_v" name="R_v" units="J_s_per_m6" />
+    <variable cmeta:id="ascending_aorta.a" initial_value="0.2802" name="a" units="dimensionless" />
+    <variable cmeta:id="ascending_aorta.b" initial_value="-505.3" name="b" units="per_m" />
+    <variable cmeta:id="ascending_aorta.c" initial_value="0.1324" name="c" units="dimensionless" />
+    <variable cmeta:id="ascending_aorta.d" initial_value="-11.14" name="d" units="per_m" />
+    <variable cmeta:id="ascending_aorta.u_in" initial_value="1" name="u_in" units="J_per_m3" />
+    <variable cmeta:id="ascending_aorta.v" initial_value="0.0" name="v" units="m3_per_s" />
+    <variable cmeta:id="ascending_aorta.u" name="u" units="J_per_m3" />
+    <variable cmeta:id="ascending_aorta.u_C" initial_value="0.0" name="u_C" units="J_per_m3" />
+    <variable cmeta:id="ascending_aorta.v_out_1" initial_value="0.0" name="v_out_1" units="m3_per_s" />
+    <variable cmeta:id="ascending_aorta.v_out_2" initial_value="0.0" name="v_out_2" units="m3_per_s" />
+    <math xmlns="http://www.w3.org/1998/Math/MathML">
+      <apply>
+        <eq />
+        <ci>h</ci>
+        <apply>
+          <times />
+          <ci>r_ascending_aorta</ci>
+          <apply>
+            <plus />
+            <apply>
+              <times />
+              <ci>a</ci>
+              <apply>
+                <exp />
+                <apply>
+                  <times />
+                  <ci>b</ci>
+                  <ci>r_ascending_aorta</ci>
+                </apply>
+              </apply>
+            </apply>
+            <apply>
+              <times />
+              <ci>c</ci>
+              <apply>
+                <exp />
+                <apply>
+                  <times />
+                  <ci>d</ci>
+                  <ci>r_ascending_aorta</ci>
+                </apply>
+              </apply>
+            </apply>
+          </apply>
+        </apply>
+      </apply>
+      <apply>
+        <eq />
+        <ci>I</ci>
+        <apply>
+          <divide />
+          <apply>
+            <times />
+            <ci>rho</ci>
+            <ci>l_ascending_aorta</ci>
+          </apply>
+          <apply>
+            <times />
+            <pi />
+            <apply>
+              <power />
+              <ci>r_ascending_aorta</ci>
+              <cn xmlns:cellml="http://www.cellml.org/cellml/1.1#" cellml:units="dimensionless">2</cn>
+            </apply>
+          </apply>
+        </apply>
+      </apply>
+      <apply>
+        <eq />
+        <ci>C</ci>
+        <apply>
+          <divide />
+          <apply>
+            <times />
+            <cn xmlns:cellml="http://www.cellml.org/cellml/1.1#" cellml:units="dimensionless">2</cn>
+            <pi />
+            <apply>
+              <power />
+              <ci>r_ascending_aorta</ci>
+              <cn xmlns:cellml="http://www.cellml.org/cellml/1.1#" cellml:units="dimensionless">3</cn>
+            </apply>
+            <ci>l_ascending_aorta</ci>
+          </apply>
+          <apply>
+            <times />
+            <ci>E</ci>
+            <ci>h</ci>
+          </apply>
+        </apply>
+      </apply>
+      <apply>
+        <eq />
+        <ci>R</ci>
+        <apply>
+          <divide />
+          <apply>
+            <times />
+            <cn xmlns:cellml="http://www.cellml.org/cellml/1.1#" cellml:units="dimensionless">8</cn>
+            <ci>mu</ci>
+            <ci>l_ascending_aorta</ci>
+          </apply>
+          <apply>
+            <times />
+            <pi />
+            <apply>
+              <power />
+              <ci>r_ascending_aorta</ci>
+              <cn xmlns:cellml="http://www.cellml.org/cellml/1.1#" cellml:units="dimensionless">4</cn>
+            </apply>
+          </apply>
+        </apply>
+      </apply>
+      <apply>
+        <eq />
+        <ci>R_v</ci>
+        <apply>
+          <divide />
+          <cn xmlns:cellml="http://www.cellml.org/cellml/1.1#" cellml:units="second">0.01</cn>
+          <ci>C</ci>
+        </apply>
+      </apply>
+      <apply>
+        <eq />
+        <apply>
+          <diff />
+          <bvar>
+            <ci>t</ci>
+          </bvar>
+          <ci>v</ci>
+        </apply>
+        <apply>
+          <divide />
+          <apply>
+            <minus />
+            <apply>
+              <minus />
+              <ci>u_in</ci>
+              <ci>u</ci>
+            </apply>
+            <apply>
+              <times />
+              <ci>R</ci>
+              <ci>v</ci>
+            </apply>
+          </apply>
+          <ci>I</ci>
+        </apply>
+      </apply>
+      <apply>
+        <eq />
+        <apply>
+          <diff />
+          <bvar>
+            <ci>t</ci>
+          </bvar>
+          <ci>u_C</ci>
+        </apply>
+        <apply>
+          <divide />
+          <apply>
+            <minus />
+            <apply>
+              <minus />
+              <ci>v</ci>
+              <ci>v_out_1</ci>
+            </apply>
+            <ci>v_out_2</ci>
+          </apply>
+          <ci>C</ci>
+        </apply>
+      </apply>
+      <apply>
+        <eq />
+        <ci>u</ci>
+        <apply>
+          <plus />
+          <ci>u_C</ci>
+          <apply>
+            <times />
+            <ci>R_v</ci>
+            <apply>
+              <minus />
+              <apply>
+                <minus />
+                <ci>v</ci>
+                <ci>v_out_1</ci>
+              </apply>
+              <ci>v_out_2</ci>
+            </apply>
+          </apply>
+        </apply>
+      </apply>
+    </math>
+  </component>
+  <rdf:RDF xmlns:bqmodel="http://biomodels.net/model-qualifiers/" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:ro="http://www.obofoundry.org/ro/ro.owl#" xmlns:opb="http://bhi.washington.edu/OPB#">
+    <rdf:Description rdf:about="#ascending_aorta.t">
+      <bqbiol:is rdf:resource="https://identifiers.org/opb/OPB_01023" />
+    </rdf:Description>
+    <rdf:Description rdf:about="#ascending_aorta.v_out_1">
+      <semsim:isComputationalComponentFor>
+        <rdf:Description rdf:about="#property_3">
+          <semsim:hasPhysicalDefinition rdf:resource="https://identifiers.org/opb/OPB_00299" />
+        </rdf:Description>
+      </semsim:isComputationalComponentFor>
+    </rdf:Description>
+    <rdf:Description rdf:about="#ascending_aorta.u_in">
+      <semsim:isComputationalComponentFor>
+        <rdf:Description rdf:about="#property_0">
+          <semsim:physicalPropertyOf>
+            <rdf:Description rdf:about="#force_0">
+              <semsim:hasSinkParticipant>
+                <rdf:Description rdf:about="#sink_0">
+                  <semsim:hasPhysicalEntityReference>
+                    <rdf:Description rdf:about="#entity_1">
+                      <semsim:hasPhysicalDefinition rdf:resource="http://identifiers.org/fma/FMA:3736" />
+                    </rdf:Description>
+                  </semsim:hasPhysicalEntityReference>
+                </rdf:Description>
+              </semsim:hasSinkParticipant>
+              <semsim:hasSourceParticipant>
+                <rdf:Description rdf:about="#source_0">
+                  <semsim:hasPhysicalEntityReference>
+                    <rdf:Description rdf:about="#entity_0">
+                      <semsim:hasPhysicalDefinition rdf:resource="http://identifiers.org/fma/FMA:7236" />
+                    </rdf:Description>
+                  </semsim:hasPhysicalEntityReference>
+                </rdf:Description>
+              </semsim:hasSourceParticipant>
+            </rdf:Description>
+          </semsim:physicalPropertyOf>
+          <semsim:hasPhysicalDefinition rdf:resource="https://identifiers.org/opb/OPB_00509" />
+        </rdf:Description>
+      </semsim:isComputationalComponentFor>
+    </rdf:Description>
+    <rdf:Description rdf:about="#ascending_aorta.u">
+      <semsim:isComputationalComponentFor>
+        <rdf:Description rdf:about="#property_2">
+          <semsim:physicalPropertyOf>
+            <rdf:Description rdf:about="#force_1">
+              <semsim:hasSinkParticipant>
+                <rdf:Description rdf:about="#sink_1">
+                  <semsim:hasPhysicalEntityReference>
+                    <rdf:Description rdf:about="#entity_2">
+                      <semsim:hasPhysicalDefinition rdf:resource="http://identifiers.org/fma/FMA:3768" />
+                    </rdf:Description>
+                  </semsim:hasPhysicalEntityReference>
+                </rdf:Description>
+              </semsim:hasSinkParticipant>
+              <semsim:hasSourceParticipant>
+                <rdf:Description rdf:about="#source_1">
+                  <semsim:hasPhysicalEntityReference rdf:resource="#entity_1" />
+                </rdf:Description>
+              </semsim:hasSourceParticipant>
+            </rdf:Description>
+          </semsim:physicalPropertyOf>
+          <semsim:hasPhysicalDefinition rdf:resource="https://identifiers.org/opb/OPB_00509" />
+        </rdf:Description>
+      </semsim:isComputationalComponentFor>
+    </rdf:Description>
+    <rdf:Description rdf:about="#ascending_aorta.t">
+      <bqbiol:is rdf:resource="https://identifiers.org/opb/OPB_01023" />
+    </rdf:Description>
+    <rdf:Description rdf:about="#ascending_aorta.v">
+      <semsim:isComputationalComponentFor>
+        <rdf:Description rdf:about="#property_1">
+          <semsim:hasPhysicalDefinition rdf:resource="https://identifiers.org/opb/OPB_00299" />
+        </rdf:Description>
+      </semsim:isComputationalComponentFor>
+    </rdf:Description>
+    <rdf:Description rdf:about="#metaid0" semsim:modelName="ascending_aorta_module" />
+    <rdf:Description rdf:about="#ascending_aorta.v_out_2">
+      <semsim:isComputationalComponentFor>
+        <rdf:Description rdf:about="#property_4">
+          <semsim:hasPhysicalDefinition rdf:resource="https://identifiers.org/opb/OPB_00299" />
+        </rdf:Description>
+      </semsim:isComputationalComponentFor>
+    </rdf:Description>
+  </rdf:RDF>
+</model>
+
